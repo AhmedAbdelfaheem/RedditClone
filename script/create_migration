@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]
+  then
+    echo "Usage: create_migration my_cool_migration"
+    exit 1
+fi
+
+OUTPUT_FILE="./src/main/resources/db/migration/V$(date +%Y%m%d%H%M%S)__$1.sql"
+
+touch $OUTPUT_FILE
+
+echo "File $OUTPUT_FILE has been created."
