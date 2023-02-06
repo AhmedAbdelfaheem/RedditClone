@@ -1,6 +1,7 @@
 package com.example.redditclone.user.model;
 
 import com.example.redditclone.abstractentity.models.AbstractEntity;
+import com.example.redditclone.post.model.Post;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
+
 @Entity
 @Table(name = "reddit_user")
 @Data
@@ -37,5 +40,9 @@ public class User extends AbstractEntity {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "user_type")
     private UserType userType;
+
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "user",orphanRemoval = true)
+    private List<Post> posts ;
+
 
 }

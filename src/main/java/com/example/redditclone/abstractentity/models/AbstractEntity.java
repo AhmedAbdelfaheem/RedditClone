@@ -42,4 +42,7 @@ public abstract class AbstractEntity implements Serializable {
     @JsonIgnore
     private LocalDateTime updatedAt;
 
+    @JsonIgnore
+    private LocalDateTime deletedAt;
+
 }
